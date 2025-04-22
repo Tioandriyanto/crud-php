@@ -2,10 +2,7 @@
 require_once '../layout/_top.php';
 require_once '../helper/connection.php';
 
-$kode_matkul = isset($_GET['kode_matkul']) ? $_GET['kode_matkul'] : '';
-if (empty($kode_matkul)) {
-  die("Error: Parameter kode_matkul tidak ditemukan atau kosong.");
-}
+$kode_matkul = $_GET['kode_matkul'];
 $query = mysqli_query($connection, "SELECT * FROM matakuliah WHERE kode_matkul='$kode_matkul'");
 ?>
 
@@ -31,7 +28,8 @@ $query = mysqli_query($connection, "SELECT * FROM matakuliah WHERE kode_matkul='
                 </tr>
                 <tr>
                   <td>MK</td>
-                  <td><input class="form-control" type="text" name="nama_matakul" size="20" required value="<?= $row['nama_matkul'] ?>"></td>
+                  <td><input class="form-control" type="text" name="nama_matkul" size="20" required value="<?= $row['nama_matkul'] ?>"></td>
+
                 </tr>
                 <tr>
                   <td>SKS</td>
